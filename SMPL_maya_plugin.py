@@ -67,7 +67,7 @@ from os.path import exists, split
 
 
 VERSION = '1.0.5'
-SCRIPT_NAME = 'SMPL_maya_plugin_v%s' % VERSION
+SCRIPT_NAME = 'SMPL_maya_plugin'
 
 ## TODO:
 ## 1. Show error messages in plugin window instead of maya script editor
