@@ -1,5 +1,5 @@
 '''
-Copyright 2018 Meshcapade GmbH and Max Planck Gesellschaft.  All rights reserved.
+Copyright 2021 Meshcapade GmbH and Max Planck Gesellschaft.  All rights reserved.
 
 More information about the SMPL model research project is available here http://smpl.is.tue.mpg
 For SMPL Model commercial use options, please visit https://meshcapade.com/infopages/licensing.html
@@ -66,7 +66,7 @@ import cPickle as pickle
 from os.path import exists, split
 
 
-VERSION = '1.0.4'
+VERSION = '1.0.5'
 SCRIPT_NAME = 'SMPL_maya_plugin_v%s' % VERSION
 
 ## TODO:
@@ -198,12 +198,12 @@ class ui():
                     real_m = np.array(cmds.xform( query=True, matrix=True)).reshape((4,4)).T
                     for mi, rot_element in enumerate( (real_m[:3,:3] - np.eye(3) ).ravel() ):
                         bidx = (9*(jidx-1)) + mi
-                        # print rot_element
-                        # cmds.setAttr( '%s.Pose%03d' % ( blendshape_node, bidx ), rot_element)
-                        cmds.blendShape(blendshape_node, edit=True, w=[(bidx, rot_element * scale_up)])
+                        cmds.setAttr( '%s.Pose%03d' % ( blendshape_node, bidx ), rot_element * scale_up)
+                        # cmds.blendShape(blendshape_node, edit=True, w=[(bidx, rot_element * scale_up)])
                         if rekey: 
-                            cmds.setKeyframe( '%s.Pose%03d' % ( blendshape_node, bidx ), breakdown=False, controlPoints=False, shape=False )
-                if jidx == 23:
+                            cmds.setKeyframe( '%s.Pose%03d' % ( blendshape_node, bidx ), breakdown=False, controlPoints=False, shape=False)
+                # Ignoring extraneous blendshapes for FBX 
+                if jidx == 21:
                     break
             
             ## clear selection
@@ -331,13 +331,18 @@ class ui():
 
     def boneSetup(self, lbs_cluster):
         bones = cmds.listConnections( lbs_cluster, type='joint')
-        if len(bones) == 72: 
-            MODEL_TYPE = 'SMPL'
-        if len(bones) == 156:     
-            MODEL_TYPE = 'SMPLH'
-        if len(bones) == 165:     
-            MODEL_TYPE = 'SMPLX'
         
+        if len(bones) <= 75: 
+            MODEL_TYPE = 'SMPL'
+        elif len(bones) <= 156:     
+            MODEL_TYPE = 'SMPLH'
+        elif len(bones) <= 165:     
+            MODEL_TYPE = 'SMPLX'
+        else:
+            raise TypeError("Model type is not supported")
+        
+        print 'num_bones:', len(bones)
+        print 'MODEL_TYPE:', MODEL_TYPE
         if MODEL_TYPE == 'SMPLH':
             self.j_names.update({
                 22: 'lindex0', 23: 'lindex1', 24: 'lindex2',
@@ -368,8 +373,6 @@ class ui():
             self.j_names.update({
                 22: 'L_Hand', 23: 'R_Hand',
             })
-        print 'num_bones:', len(bones)
-        print 'MODEL_TYPE:', MODEL_TYPE
         rootBone = [b for b in bones if 'root' in b ]
         if not rootBone:
             rootBone = [b for b in bones if 'Pelvis' in b ]
