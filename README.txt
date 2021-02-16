@@ -1,4 +1,4 @@
-Copyright 2018 Meshcapade GmbH and Max Planck Gesellschaft.  All rights reserved.
+Copyright 2021 Meshcapade GmbH and Max Planck Gesellschaft.  All rights reserved.
 
 More information about the SMPL model research project is available here http://smpl.is.tue.mpg
 For SMPL Model commercial use options, please visit https://meshcapade.com/infopages/licensing.html
