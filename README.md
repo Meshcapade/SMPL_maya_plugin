@@ -4,6 +4,10 @@ More information about the SMPL model research project is available here http://
 For SMPL Model commercial use options, please visit https://meshcapade.com/infopages/licensing.html
 For comments or questions, please email us at: support@meshcapade.com
 
+Sample FBX files for use with this script:
+--------------------------
+This script allows you to manually edit SMPL Model animations inside Maya. You can download some FBX files for SMPL, SMPLH and SMPLX to use with this script at: [SMPL FBX Samples](https://app.box.com/s/2yn9znx56icf3t77s4h9b4qxa3b25rdb)
+
 
 Current versions supported:
 --------------------------
