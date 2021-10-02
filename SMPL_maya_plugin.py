@@ -565,8 +565,8 @@ class ui:
         gender = 'male' if maya_mesh[0] == 'm' else 'female'
 
         ## Get new joints
-        num_vert_columns = len(joints_mat[gender][1])
-        mesh_verts_to_dot = np.asarray(mesh_verts[:num_vert_columns])
+        num_verts_to_use = len(joints_mat[gender][1])
+        mesh_verts_to_dot = np.asarray(mesh_verts[:num_verts_to_use])
         subject_j = joints_mat[gender].dot(mesh_verts_to_dot)
 
         ## Lock skinning and set new joint locations
