@@ -46,8 +46,7 @@ Maya 2023+
 
 ## About the Script:
 
-The script displays a UI to apply SMPL's shape and pose blendshapes and to adjust the skeleton to new body shapes.
-Load this plugin into Maya. It will create a window with 3 options:
+The script displays a UI to apply the pose-corrective blendshapes for SMPL, SMPLH, SMPLX and STAR models in Maya. Load this plugin into Maya. It will create a window with 3 options:
 
 1- Apply Pose Blend Shapes to Current Frame: 
 	If you repose the model in Maya, then click this to 
@@ -64,11 +63,8 @@ Load this plugin into Maya. It will create a window with 3 options:
     values at given frame range by setting a keyframe at each frame in the 
     given range.
     
-3- Set Mesh to Bind-Pose & Recompute Skeleton: 
-	When you edit the shape blend shapes to change body shape the 
-	skeleton will no longer be correct.  Click first button to set the 
-    mesh into the bind-pose. Next, click this to 'Recompute Skeleton' 
-    to recompute the skeleton rig to match the new body shape.
+3- Make Pose Blend Shapes fire interactively: 
+	Click this button to turn on automatic pose-correctives for any SMPL(-/H/X) or STAR rigged mesh. Once this is set to ON, then any time you repose the SMPL model, the pose-correctives will automatically be applied to the mesh.
 
 Always make sure to click on the mesh in the 3D view to select it before 
 using any of the functions in the plugin. Select only the mesh of the model 
