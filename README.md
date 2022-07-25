@@ -4,38 +4,48 @@ More information about the SMPL model research project is available here http://
 For SMPL Model commercial use options, please visit https://meshcapade.com/infopages/licensing.html
 For comments or questions, please email us at: support@meshcapade.com
 
-Installation:
---------------------------
-To load SMPL_maya_plugin directly into Maya:  follow these steps:
-1.  Windows -> Settings/Preferences -> Plug-in Manager.  This starts the "Plug-in Manager UI".
-2.  Click the "Browse" button in the bottom Lf corner of the "Plug-in Manager" UI.
-3.  In the resulting "Load Plugin" window, in the field labelled "Look in:":  type the path to the directory where SMPL_maya_plugin resides(ie where it was downloaded, or where it was moved after downloading).  After pressing the Enter key:  the contents of the directory should show up in the directory listing widget immediately below the "Look in:" field.  "SMPL_maya_plugin.py" should be among the listed files.
-4.  Double-click on "SMPL_maya_plugin.py" in the directory listing in the "Load Plugin" UI.  
-    This will:  a.  load the plugin, and b.  launch the plugin's UI.
+## Installation:
 
-Instructions to edit environment variables so Maya can find the plugin upon starting:
+### 1. Load the SMPL Pose-Correctives driver node
+
+First we want to load the `mde_py_poseblends_driver` plugin into Maya. This will enable the automatic SMPL posecorrectives node in Maya. 
+
+1. Got to: Windows -> Settings/Preferences -> Plug-in Manager.  This starts the "Plug-in Manager UI".
+
+2. Click the "Browse" button in the bottom Lf corner of the "Plug-in Manager" UI.
+
+3. Browse to the file: `mde_py_poseblends_driver/mde_py_poseblends_driver.py`. Click Open.
+
+
+>> Now you should have the `mde_py_poseblends_driver.py` appearing in the list of loaded plug-ins in your Plug-in Manager window.
+
+
+### 2. Load SMPL_maya_plugin
+
+1. Got to: Windows -> Settings/Preferences -> Plug-in Manager.  This starts the "Plug-in Manager UI".
+
+2. Click the "Browse" button in the bottom Lf corner of the "Plug-in Manager" UI.
+
+3. Browse to the file: `SMPL_maya_plugin.py`. Click Open.
+
+
+>> This should open up the "SMPL Rigging and Pose Corrections Toolbox" window in your Maya program.
+
+
+>> Instructions to edit environment variables so Maya can find the plugin upon starting:
 https://knowledge.autodesk.com/support/maya/learn-explore/caas/CloudHelp/cloudhelp/2022/ENU/Maya-Customizing/files/GUID-FA51BD26-86F3-4F41-9486-2C3CF52B9E17-htm.html
     
 
-Sample FBX files for use with this script:
---------------------------
+## Sample FBX files for use with this script:
+
 This script allows you to manually edit SMPL Model animations inside Maya. You can download some FBX files for SMPL, SMPLH and SMPLX to use with this script at: [SMPL FBX Samples](https://app.box.com/s/2yn9znx56icf3t77s4h9b4qxa3b25rdb)
 
 
-Current versions supported:
---------------------------
-Windows: Maya 2022
+## Current versions supported:
+Maya 2023+
 
+## About the Script:
 
-Dependencies:
-------------
-Numpy is required for running this script. Numpy is a python module that
-can be installed following the instructions given here:
-http://docs.scipy.org/doc/numpy/user/install.html
-
-
-About the Script:
------------------
 The script displays a UI to apply SMPL's shape and pose blendshapes and to adjust the skeleton to new body shapes.
 Load this plugin into Maya. It will create a window with 3 options:
 
